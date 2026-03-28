@@ -1,0 +1,26 @@
+{
+  "name": "Notebook — Biblioteca Pessoal",
+  "short_name": "Notebook",
+  "description": "Explorador de conhecimento pessoal a partir de arquivos GitHub",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#0f0f0f",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "education"],
+  "lang": "pt-BR"
+}

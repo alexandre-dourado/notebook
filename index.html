@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Biblioteca pessoal de conhecimento baseada em arquivos GitHub" />
+  <meta name="theme-color" content="#0f0f0f" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Notebook" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Notebook — Biblioteca Pessoal" />
+  <meta property="og:description" content="Explorador de conhecimento pessoal" />
+  <meta property="og:type" content="website" />
+
+  <title>Notebook</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Ícones -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23c9a96e'/><text x='16' y='22' text-anchor='middle' font-family='Georgia' font-size='16' fill='%230f0f0f' font-weight='bold'>N</text></svg>" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Marked.js (Markdown → HTML) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+
+  <!-- SortableJS (Drag and Drop) -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js" defer></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SIDEBAR
+       ═══════════════════════════════════════════════════════════ -->
+  <aside id="sidebar" role="navigation" aria-label="Arquivos">
+
+    <!-- Header da sidebar -->
+    <header class="sidebar-header">
+      <div class="app-logo" aria-hidden="true">N</div>
+      <span class="app-title">Notebook</span>
+      <button class="sidebar-toggle" id="sidebar-toggle-btn" title="Recolher sidebar" aria-label="Recolher sidebar">
+        <!-- Ícone inserido pelo JS -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <line x1="9" y1="3" x2="9" y2="21"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Campo de busca -->
+    <div class="search-wrap">
+      <div class="search-box">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Buscar arquivos… (⌘K)"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Buscar arquivos"
+        />
+        <button class="search-clear" id="search-clear" title="Limpar busca" aria-label="Limpar busca">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Controles de ordenação -->
+    <div class="sidebar-controls">
+      <span class="sort-label">Ordem</span>
+
+      <button class="icon-btn sort-btn active" data-sort="manual" title="Ordem manual (arrastar)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="6" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="15" cy="6" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="9" cy="18" r="1" fill="currentColor" stroke="none"/>
+          <circle cx="15" cy="18" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        Manual
+      </button>
+
+      <div class="sort-sep" aria-hidden="true"></div>
+
+      <button class="icon-btn sort-btn" data-sort="alpha" title="Ordenar A→Z">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 7 4 4 20 4"/><line x1="9" y1="4" x2="9" y2="20"/>
+          <path d="M13 20h7"/><path d="M18 15l5 5-5 5"/>
+        </svg>
+        A→Z
+      </button>
+
+      <div class="sort-sep" aria-hidden="true"></div>
+
+      <button class="icon-btn sort-btn" data-sort="date" title="Ordenar por data de edição">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Data
+      </button>
+    </div>
+
+    <!-- Lista de arquivos -->
+    <div class="sidebar-list" id="sidebar-list" role="list" aria-label="Lista de arquivos"></div>
+
+    <!-- Indicador de sync -->
+    <div class="sync-indicator" aria-live="polite">
+      <span class="sync-dot syncing" id="sync-dot"></span>
+      <span id="sync-label">Carregando…</span>
+    </div>
+
+    <!-- Footer da sidebar -->
+    <footer class="sidebar-footer">
+      <button class="footer-btn" id="new-group-btn" title="Criar grupo">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
+          <line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/>
+        </svg>
+        Novo grupo
+      </button>
+
+      <button class="footer-btn" id="refresh-btn" title="Recarregar lista">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+          <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+        </svg>
+        Recarregar
+      </button>
+    </footer>
+
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MAIN
+       ═══════════════════════════════════════════════════════════ -->
+  <main id="main" role="main">
+
+    <!-- Topbar -->
+    <div id="topbar" role="toolbar" aria-label="Barra de ferramentas">
+
+      <!-- Botão menu (mobile) -->
+      <button class="topbar-menu-btn" id="menu-btn" aria-label="Abrir menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
+      <!-- Breadcrumb -->
+      <nav id="breadcrumb" aria-label="Localização atual">
+        <span>Notebook</span>
+      </nav>
+
+      <!-- Ações da topbar -->
+      <div class="topbar-actions">
+
+        <!-- Modo leitura -->
+        <button class="topbar-btn" id="reading-mode-btn" title="Modo leitura" aria-label="Alternar modo leitura">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
+          </svg>
+        </button>
+
+        <!-- Toggle tema -->
+        <button class="topbar-btn" id="theme-toggle-btn" title="Alternar tema" aria-label="Alternar tema claro/escuro">
+          <!-- Ícone inserido pelo JS -->
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Área de conteúdo -->
+    <div id="content-area" role="region" aria-label="Conteúdo do arquivo" aria-live="polite">
+
+      <!-- Estado inicial (nenhum arquivo selecionado) -->
+      <div id="welcome" aria-hidden="false">
+        <div class="welcome-icon" aria-hidden="true">📖</div>
+        <p class="welcome-title">Seu notebook</p>
+        <p class="welcome-sub">Selecione um arquivo na barra lateral para começar a ler.</p>
+      </div>
+
+      <!-- Conteúdo renderizado (md / txt) -->
+      <div id="rendered-content" role="article" aria-label="Conteúdo do arquivo"></div>
+
+      <!-- Frame para HTML -->
+      <iframe
+        id="html-frame"
+        title="Conteúdo HTML"
+        sandbox="allow-scripts allow-same-origin"
+        aria-label="Conteúdo HTML do arquivo"
+      ></iframe>
+
+      <!-- Loading overlay -->
+      <div id="loading-overlay" role="status" aria-label="Carregando…">
+        <div class="spinner" aria-hidden="true"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       OVERLAYS / MODAIS
+       ═══════════════════════════════════════════════════════════ -->
+
+  <!-- Context menu -->
+  <div id="context-menu" role="menu" aria-label="Opções do arquivo"></div>
+
+  <!-- Modal: Criar grupo -->
+  <div class="modal-backdrop" id="group-modal" role="dialog" aria-modal="true" aria-labelledby="group-modal-title">
+    <div class="modal">
+      <h3 id="group-modal-title">Novo grupo</h3>
+      <input
+        type="text"
+        id="group-name-input"
+        placeholder="Nome do grupo…"
+        maxlength="40"
+        autocomplete="off"
+      />
+      <div class="modal-actions">
+        <button class="btn-ghost" id="group-cancel-btn">Cancelar</button>
+        <button class="btn-primary" id="group-confirm-btn">Criar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toasts -->
+  <div id="toast-container" role="status" aria-live="polite"></div>
+
+  <!-- Badge offline -->
+  <div id="offline-badge" role="alert">Offline</div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
