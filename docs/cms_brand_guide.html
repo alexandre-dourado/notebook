@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Identidade Visual + Prompts IA — CMS Montes Claros</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cms-blue:   #1B6CB5;
+  --cms-navy:   #0D2E5A;
+  --cms-green:  #1E8A4A;
+  --cms-yellow: #F5C400;
+  --cms-white:  #FFFFFF;
+  --cms-off:    #F7F8FA;
+  --cms-ink:    #111827;
+  --cms-muted:  #6B7280;
+  --cms-border: #E5E7EB;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--cms-off);
+  color: var(--cms-ink);
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+.topbar {
+  background: var(--cms-navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  height: 56px;
+  position: sticky; top: 0; z-index: 200;
+}
+.topbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: white;
+}
+.topbar-brand span { color: var(--cms-yellow); }
+.topbar-nav { display: flex; gap: 32px; }
+.topbar-nav a {
+  font-size: 12px; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase; color: rgba(255,255,255,0.65);
+  text-decoration: none; transition: color .2s;
+}
+.topbar-nav a:hover { color: var(--cms-yellow); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--cms-navy);
+  color: white;
+  padding: 96px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  bottom: -60px; right: -60px;
+  width: 480px; height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,196,0,0.12) 0%, transparent 65%);
+}
+.hero-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--cms-yellow);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(40px, 5.5vw, 80px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  max-width: 700px;
+  margin-bottom: 24px;
+}
+.hero h1 em { color: var(--cms-yellow); font-style: normal; }
+.hero p {
+  font-size: 16px; color: rgba(255,255,255,0.6);
+  max-width: 520px; font-weight: 300;
+}
+
+/* ── WRAP ── */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 680px) { .wrap { padding: 0 20px; } .hero { padding: 64px 20px; } .topbar { padding: 0 20px; } }
+
+/* ── SECTION ── */
+.section { padding: 80px 0; border-bottom: 1px solid var(--cms-border); scroll-margin-top: 56px; }
+.section:last-child { border-bottom: none; }
+.section-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--cms-blue);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 900;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  color: var(--cms-navy);
+  margin-bottom: 40px;
+}
+.section-title span { color: var(--cms-blue); }
+
+/* ── COLOR SWATCHES ── */
+.swatches { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
+.swatch {
+  width: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--cms-border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.swatch-color { height: 72px; }
+.swatch-info { padding: 10px 12px; background: white; }
+.swatch-name { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: var(--cms-navy); }
+.swatch-hex { font-size: 11px; color: var(--cms-muted); font-family: monospace; }
+
+/* ── TYPE SPECIMENS ── */
+.type-specimens { display: grid; gap: 16px; }
+.type-card {
+  background: white;
+  border-radius: 12px;
+  padding: 28px 32px;
+  border: 1px solid var(--cms-border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.type-meta { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cms-muted); margin-bottom: 10px; }
+
+/* ── GRID ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+@media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } .grid-3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .grid-3 { grid-template-columns: 1fr; } }
+
+/* ── PRINCIPLE CARD ── */
+.principle {
+  background: white;
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid var(--cms-border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+}
+.principle::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--cms-blue);
+}
+.principle.yellow::before { background: var(--cms-yellow); }
+.principle.green::before { background: var(--cms-green); }
+.principle.navy::before { background: var(--cms-navy); }
+.principle-n {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px; font-weight: 900;
+  color: var(--cms-border);
+  line-height: 1; margin-bottom: 12px;
+}
+.principle h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--cms-navy); margin-bottom: 8px;
+}
+.principle p { font-size: 13.5px; color: var(--cms-muted); line-height: 1.65; }
+
+/* ── PROMPT BOX ── */
+.prompt-block { margin-bottom: 32px; }
+.prompt-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--cms-blue); margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.prompt-label::after { content: ''; flex: 1; height: 1px; background: var(--cms-border); }
+.prompt-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px; font-weight: 800;
+  color: var(--cms-navy); margin-bottom: 12px; letter-spacing: -0.3px;
+}
+.prompt-desc { font-size: 14px; color: var(--cms-muted); margin-bottom: 16px; }
+.prompt-box {
+  background: var(--cms-navy);
+  border-radius: 10px;
+  padding: 24px 28px;
+  position: relative;
+}
+.prompt-box pre {
+  font-family: 'Open Sans', monospace;
+  font-size: 13px;
+  color: rgba(255,255,255,0.88);
+  white-space: pre-wrap;
+  line-height: 1.75;
+}
+.prompt-box pre .tag { color: var(--cms-yellow); font-weight: 700; }
+.prompt-box pre .comment { color: rgba(255,255,255,0.35); }
+.copy-btn {
+  position: absolute; top: 14px; right: 14px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+  border-radius: 6px; padding: 5px 12px;
+  font-size: 11px; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase; cursor: pointer;
+  transition: background .2s;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.18); }
+.copy-btn.copied { color: var(--cms-yellow); }
+
+/* ── PREVIEW CARDS (mockups) ── */
+.previews { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+@media (max-width: 700px) { .previews { grid-template-columns: 1fr; } }
+
+/* Instagram post mockup */
+.mock-instagram {
+  aspect-ratio: 1;
+  background: var(--cms-navy);
+  border-radius: 12px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+.mock-instagram::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,196,0,.18) 0%, transparent 70%);
+}
+.mock-insta-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.mock-insta-logo { display: flex; align-items: center; gap: 8px; }
+.mock-logo-icon {
+  width: 32px; height: 32px;
+  background: var(--cms-yellow);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+.mock-logo-text { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700; text-transform: uppercase; color: white; letter-spacing: 1px; line-height: 1.2; }
+.mock-insta-tag { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cms-yellow); background: rgba(245,196,0,.12); border: 1px solid rgba(245,196,0,.25); border-radius: 20px; padding: 3px 10px; }
+.mock-insta-title { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 900; color: white; line-height: 1.1; letter-spacing: -0.5px; z-index: 1; }
+.mock-insta-title span { color: var(--cms-yellow); }
+.mock-insta-bottom { display: flex; justify-content: space-between; align-items: flex-end; z-index: 1; }
+.mock-insta-date { font-size: 11px; color: rgba(255,255,255,.55); font-weight: 300; }
+.mock-insta-dot { width: 8px; height: 8px; border-radius: 50%; background: #E02020; }
+
+/* Panfleto mockup */
+.mock-panfleto {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--cms-border);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+.mock-pan-header {
+  background: var(--cms-blue);
+  padding: 24px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.mock-pan-header::after {
+  content: '';
+  position: absolute; right: -20px; top: -20px;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+}
+.mock-pan-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--cms-yellow); margin-bottom: 6px; }
+.mock-pan-title { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 900; color: white; letter-spacing: -0.5px; line-height: 1.1; }
+.mock-pan-body { padding: 20px 28px 24px; }
+.mock-pan-item { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+.mock-pan-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cms-blue); margin-top: 6px; flex-shrink: 0; }
+.mock-pan-text { font-size: 12px; color: #374151; line-height: 1.5; }
+.mock-pan-footer { padding: 12px 28px; background: var(--cms-off); border-top: 1px solid var(--cms-border); display: flex; justify-content: space-between; align-items: center; }
+.mock-pan-url { font-size: 11px; color: var(--cms-muted); font-weight: 600; }
+.mock-pan-tag { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; color: var(--cms-yellow); background: var(--cms-navy); border-radius: 4px; padding: 3px 8px; letter-spacing: 1px; }
+
+/* ── CSS SECTION ── */
+.code-block {
+  background: var(--cms-navy);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.15);
+}
+.code-header {
+  padding: 12px 20px;
+  background: rgba(255,255,255,.05);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.code-dots { display: flex; gap: 6px; }
+.code-dots span { width: 10px; height: 10px; border-radius: 50%; }
+.code-dots span:nth-child(1) { background: #FF5F57; }
+.code-dots span:nth-child(2) { background: #FEBC2E; }
+.code-dots span:nth-child(3) { background: #28C840; }
+.code-filename { font-family: monospace; font-size: 12px; color: rgba(255,255,255,.45); }
+.code-content {
+  padding: 24px 28px;
+  overflow-x: auto;
+}
+.code-content code {
+  font-family: 'Courier New', monospace;
+  font-size: 12.5px;
+  line-height: 1.85;
+  color: rgba(255,255,255,.82);
+  white-space: pre;
+  display: block;
+}
+.code-content .c-comment { color: rgba(255,255,255,.3); }
+.code-content .c-prop { color: #9ECBFF; }
+.code-content .c-val { color: #F5C400; }
+.code-content .c-sel { color: #85E89D; }
+.code-content .c-at { color: #E06C75; }
+
+/* ── DO/DON'T ── */
+.dodont { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+@media (max-width: 600px) { .dodont { grid-template-columns: 1fr; } }
+.dodont-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--cms-border);
+}
+.dodont-label {
+  padding: 10px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+}
+.dodont-card.do .dodont-label { background: #D1FAE5; color: #065F46; }
+.dodont-card.dont .dodont-label { background: #FEE2E2; color: #991B1B; }
+.dodont-body { padding: 16px 18px; background: white; font-size: 13.5px; color: var(--cms-muted); line-height: 1.6; }
+.dodont-body strong { color: var(--cms-ink); }
+
+/* ── TAG ── */
+.tag {
+  display: inline-block;
+  background: var(--cms-blue);
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  border-radius: 4px; padding: 3px 9px;
+  margin-right: 6px; margin-bottom: 6px;
+}
+.tag.yellow { background: var(--cms-yellow); color: var(--cms-navy); }
+.tag.green { background: var(--cms-green); }
+.tag.navy { background: var(--cms-navy); }
+.tag.outline { background: transparent; border: 1.5px solid var(--cms-blue); color: var(--cms-blue); }
+
+/* ── SEPARATOR ── */
+.big-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(80px, 12vw, 160px);
+  font-weight: 900;
+  color: var(--cms-border);
+  line-height: 1;
+  margin-bottom: -20px;
+  letter-spacing: -4px;
+  user-select: none;
+}
+
+/* ── FOOTER ── */
+.page-footer {
+  background: var(--cms-navy);
+  color: rgba(255,255,255,.5);
+  text-align: center;
+  padding: 32px 20px;
+  font-size: 13px;
+}
+.page-footer strong { color: rgba(255,255,255,.8); }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <span class="topbar-brand">CMS <span>Montes Claros</span> — Identidade Visual</span>
+  <div class="topbar-nav">
+    <a href="#cores">Cores</a>
+    <a href="#tipografia">Tipografia</a>
+    <a href="#principios">Princípios</a>
+    <a href="#prompts">Prompts IA</a>
+    <a href="#css">CSS Mestre</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="hero-label">Design System · 2026</p>
+    <h1>IDENTIDADE<br><em>VISUAL</em><br>& PROMPTS IA</h1>
+    <p style="margin-top:28px;">Guia oficial para criação de materiais, prompts para IA generativa e CSS master. Swiss Design, hierarquia tipográfica, contraste e respiro.</p>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════
+     1. ANÁLISE DA MARCA
+════════════════════════════════════════════════ -->
+<section class="section" id="analise">
+  <div class="wrap">
+    <p class="section-eyebrow">01 · Análise de Marca</p>
+    <h2 class="section-title">O que a marca<br><span>comunica</span></h2>
+
+    <div class="grid-3">
+      <div class="principle navy">
+        <div class="principle-n">01</div>
+        <h3>Identidade Territorial</h3>
+        <p>O logotipo abstrai os elementos naturais de Montes Claros — as montanhas brancas, o sol amarelo, o céu azul e as ondas verdes do Cerrado. É ao mesmo tempo institucional e local.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-n">02</div>
+        <h3>Paleta Tricolor Forte</h3>
+        <p>Azul (instituição + confiança), Verde (saúde + natureza) e Amarelo (energia + clareza). Funciona em fundo escuro e claro. O amarelo é o acento, não o fundo dominante em textos.</p>
+      </div>
+      <div class="principle green">
+        <div class="principle-n">03</div>
+        <h3>Geometria Orgânica</h3>
+        <p>Formas arredondadas e onduladas coexistem com diagramação retilínea. O contraste entre curva (marca) e grid reto (layouts) cria a tensão visual certa para Swiss Design.</p>
+      </div>
+      <div class="principle yellow">
+        <div class="principle-n">04</div>
+        <h3>Tipografia Bold</h3>
+        <p>Os materiais existentes usam Montserrat Heavy/Black. É a escolha certa: condensada, legível, institucional. Georama e Neue Haas Grotesk são upgrades naturais para versões mais refinadas.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-n">05</div>
+        <h3>Versatilidade</h3>
+        <p>A marca já aparece em fundo azul escuro, amarelo e branco com igual qualidade. Isso é ativo raro — permite alternância entre fundos sem perder impacto visual.</p>
+      </div>
+      <div class="principle navy">
+        <div class="principle-n">06</div>
+        <h3>Tom Swiss Design</h3>
+        <p>Aplicar Swiss System: grid de 12 colunas, espaços generosos, hierarquia por escala tipográfica (não por ornamento), alinhamento à esquerda ou bloco. Zero decoração gratuita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     2. CORES
+════════════════════════════════════════════════ -->
+<section class="section" id="cores">
+  <div class="wrap">
+    <p class="section-eyebrow">02 · Sistema de Cores</p>
+    <h2 class="section-title">Paleta<br><span>oficial</span></h2>
+
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0D2E5A;"></div>
+        <div class="swatch-info"><div class="swatch-name">Navy</div><div class="swatch-hex">#0D2E5A</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1B6CB5;"></div>
+        <div class="swatch-info"><div class="swatch-name">Azul</div><div class="swatch-hex">#1B6CB5</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1E8A4A;"></div>
+        <div class="swatch-info"><div class="swatch-name">Verde</div><div class="swatch-hex">#1E8A4A</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F5C400;"></div>
+        <div class="swatch-info"><div class="swatch-name">Amarelo</div><div class="swatch-hex">#F5C400</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FFFFFF; border: 1px solid #e5e7eb;"></div>
+        <div class="swatch-info"><div class="swatch-name">Branco</div><div class="swatch-hex">#FFFFFF</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F7F8FA; border: 1px solid #e5e7eb;"></div>
+        <div class="swatch-info"><div class="swatch-name">Off-White</div><div class="swatch-hex">#F7F8FA</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#111827;"></div>
+        <div class="swatch-info"><div class="swatch-name">Ink</div><div class="swatch-hex">#111827</div></div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="dodont-card do">
+        <div class="dodont-label">✓ USE</div>
+        <div class="dodont-body">
+          <strong>Navy + Amarelo</strong> → combinação principal (fundo escuro, acento quente)<br><br>
+          <strong>Branco + Azul + Amarelo</strong> → documentos, relatórios<br><br>
+          <strong>Verde como acento</strong> → dados de saúde, sucesso, natureza<br><br>
+          <strong>Cinza Off-White como fundo</strong> → telas, fundos de seção
+        </div>
+      </div>
+      <div class="dodont-card dont">
+        <div class="dodont-label">✗ EVITE</div>
+        <div class="dodont-body">
+          <strong>Amarelo como fundo de texto</strong> → baixa legibilidade em texto longo<br><br>
+          <strong>Gradientes pesados</strong> → a marca é flat e geométrica<br><br>
+          <strong>Mais de 3 cores em um peça</strong> → use navy+amarelo OU azul+branco<br><br>
+          <strong>Sombras excessivas</strong> → Swiss design prefere borda e espaço
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     3. TIPOGRAFIA
+════════════════════════════════════════════════ -->
+<section class="section" id="tipografia">
+  <div class="wrap">
+    <p class="section-eyebrow">03 · Tipografia</p>
+    <h2 class="section-title">Hierarquia<br><span>tipográfica</span></h2>
+
+    <div class="type-specimens">
+      <div class="type-card">
+        <div class="type-meta">Display / Hero — Montserrat Black 900 · tracking -2px</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:clamp(36px,6vw,72px);font-weight:900;letter-spacing:-2px;line-height:0.95;color:var(--cms-navy);">SAÚDE<br>PÚBLICA</div>
+        <div style="margin-top:12px;font-size:12px;color:var(--cms-muted);">Títulos principais, capas, posts. Todo caps. Quebra de linha intencional.</div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-meta">Heading — Montserrat Bold 700 · tracking -0.5px</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:clamp(22px,3vw,36px);font-weight:700;letter-spacing:-0.5px;color:var(--cms-navy);">463ª Reunião Ordinária</div>
+        <div style="margin-top:6px;font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;color:var(--cms-blue);">Conselho Municipal de Saúde</div>
+        <div style="margin-top:12px;font-size:12px;color:var(--cms-muted);">Seções, subtítulos, nomes de documentos.</div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-meta">Eyebrow / Label — Montserrat Bold 700 · ALL CAPS · tracking +3px</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cms-blue);">INFORME OFICIAL · 04 DE MARÇO DE 2026</div>
+        <div style="margin-top:12px;font-size:12px;color:var(--cms-muted);">Rótulos de seção, categorias, datas. Sempre acima do título.</div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-meta">Body — Open Sans Regular 400 · 15–16px · line-height 1.75</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:15px;font-weight:400;line-height:1.75;color:#374151;max-width:560px;">O Conselho Municipal de Saúde de Montes Claros é instância de controle social que atua na formulação de estratégias e no controle da execução da Política de Saúde.</div>
+        <div style="margin-top:12px;font-size:12px;color:var(--cms-muted);">Corpo de texto, parágrafos, descrições. Nunca abaixo de 14px.</div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-meta">Caption / Meta — Open Sans 300 · 12–13px · letter-spacing +0.5px</div>
+        <div style="font-family:'Open Sans',sans-serif;font-size:12px;font-weight:300;letter-spacing:0.5px;color:var(--cms-muted);">Plenário da Câmara Municipal de Vereadores · Rua Urbino Viana, 600 · Vila Guilhermina</div>
+        <div style="margin-top:12px;font-size:12px;color:var(--cms-muted);">Endereços, notas, rodapés, legendas.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;padding:24px 28px;background:var(--cms-navy);border-radius:12px;">
+      <p style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cms-yellow);margin-bottom:12px;">REGRA DE OURO</p>
+      <p style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;color:white;line-height:1.3;">Contraste de escala > ornamento.<br><span style="color:rgba(255,255,255,.5);font-weight:300;font-size:16px;">Uma linha em 72px ao lado de 12px cria mais impacto que qualquer decoração.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     4. PRINCÍPIOS SWISS DESIGN
+════════════════════════════════════════════════ -->
+<section class="section" id="principios">
+  <div class="wrap">
+    <p class="section-eyebrow">04 · Princípios de Layout</p>
+    <h2 class="section-title">Swiss Design<br><span>aplicado</span></h2>
+
+    <div class="grid-2" style="margin-bottom:40px;">
+      <div class="principle">
+        <div class="principle-n">G</div>
+        <h3>Grid de 12 Colunas</h3>
+        <p>Toda peça parte de um grid. Posts instagram: 6+6. Documentos: 3+9 (label + conteúdo). Panfletos: 4+8. A margem mínima é 1 coluna (≈8% da largura).</p>
+      </div>
+      <div class="principle yellow">
+        <div class="principle-n">E</div>
+        <h3>Espaço em Branco como Elemento</h3>
+        <p>O espaço vazio não é ausência — é presença. Margens generosas sinalizam instituição séria. Mínimo 40px entre blocos, 60–80px nas margens laterais.</p>
+      </div>
+      <div class="principle green">
+        <div class="principle-n">H</div>
+        <h3>Hierarquia por Escala</h3>
+        <p>3 níveis no máximo por peça: Grande (título), Médio (dados/info), Pequeno (detalhe/rodapé). Nunca 5 tamanhos diferentes em um único material.</p>
+      </div>
+      <div class="principle navy">
+        <div class="principle-n">A</div>
+        <h3>Alinhamento Consistente</h3>
+        <p>Prefira alinhamento à esquerda para textos. Centralizado apenas para títulos display em peças quadradas (Instagram). Nunca justificado em textos curtos.</p>
+      </div>
+    </div>
+
+    <!-- Visual examples -->
+    <p style="font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cms-blue);margin-bottom:20px;">LAYOUTS DE REFERÊNCIA</p>
+    <div class="previews">
+      <!-- Instagram mockup -->
+      <div>
+        <p style="font-size:12px;font-weight:600;color:var(--cms-muted);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase;">Post Instagram (1:1)</p>
+        <div class="mock-instagram">
+          <div class="mock-insta-top">
+            <div class="mock-insta-logo">
+              <div class="mock-logo-icon">🏥</div>
+              <div class="mock-logo-text">CMS<br>MONTES CLAROS</div>
+            </div>
+            <div class="mock-insta-tag">INFORME</div>
+          </div>
+          <div class="mock-insta-title"><span>463ª</span><br>REUNIÃO<br>ORDINÁRIA</div>
+          <div class="mock-insta-bottom">
+            <div class="mock-insta-date">04/03/2026 · 13h30</div>
+            <div class="mock-insta-dot"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Panfleto mockup -->
+      <div>
+        <p style="font-size:12px;font-weight:600;color:var(--cms-muted);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase;">Panfleto / Comunicado (A5)</p>
+        <div class="mock-panfleto">
+          <div class="mock-pan-header">
+            <div class="mock-pan-eyebrow">Conselho Municipal de Saúde · Montes Claros</div>
+            <div class="mock-pan-title">Pré-Conferência<br>de Saúde da Mulher</div>
+          </div>
+          <div class="mock-pan-body">
+            <div class="mock-pan-item"><div class="mock-pan-dot"></div><div class="mock-pan-text"><strong>Data:</strong> Terça-feira, 10 de março de 2026</div></div>
+            <div class="mock-pan-item"><div class="mock-pan-dot"></div><div class="mock-pan-text"><strong>Horário:</strong> A partir das 7h30</div></div>
+            <div class="mock-pan-item"><div class="mock-pan-dot"></div><div class="mock-pan-text"><strong>Local:</strong> SIMANS — Montes Claros</div></div>
+            <div class="mock-pan-item"><div class="mock-pan-dot"></div><div class="mock-pan-text">Todas as mulheres estão convidadas. Evento gratuito e aberto ao público.</div></div>
+          </div>
+          <div class="mock-pan-footer">
+            <span class="mock-pan-url">cms.montesclaros.mg.gov.br</span>
+            <span class="mock-pan-tag">SAÚDE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     5. PROMPTS IA
+════════════════════════════════════════════════ -->
+<section class="section" id="prompts">
+  <div class="wrap">
+    <p class="section-eyebrow">05 · Prompts para IA</p>
+    <h2 class="section-title">Sistema de<br><span>prompts</span></h2>
+
+    <p style="font-size:15px;color:var(--cms-muted);max-width:620px;margin-bottom:48px;line-height:1.75;">Cole o <strong style="color:var(--cms-ink);">PROMPT BASE</strong> no início de cada conversa. Depois use os <strong style="color:var(--cms-ink);">Prompts Específicos</strong> conforme o material desejado. Substitua os campos entre <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:13px;">[colchetes]</code> pelo conteúdo real.</p>
+
+    <!-- PROMPT BASE -->
+    <div class="prompt-block">
+      <div class="prompt-label">Prompt Base — Cole SEMPRE no início</div>
+      <div class="prompt-title">🔐 Identidade Visual Master</div>
+      <p class="prompt-desc">Este prompt "programa" a IA com toda a identidade. Use-o uma vez por sessão, antes de qualquer pedido de material.</p>
+      <div class="prompt-box" id="p-base">
+        <button class="copy-btn" onclick="copyPrompt('p-base',this)">COPIAR</button>
+        <pre>
+<span class="tag">IDENTIDADE VISUAL — CMS Montes Claros</span>
+<span class="comment">─────────────────────────────────────────</span>
+
+Você é um designer especialista em Swiss Design e Design Institucional.
+Ao criar qualquer material para o Conselho Municipal de Saúde de Montes Claros,
+siga OBRIGATORIAMENTE estas diretrizes:
+
+<span class="tag">CORES (use apenas estas):</span>
+• Navy:   #0D2E5A  → fundo principal escuro
+• Azul:   #1B6CB5  → cor institucional primária
+• Verde:  #1E8A4A  → saúde, dados positivos
+• Amarelo:#F5C400  → acento, destaques, datas
+• Branco: #FFFFFF  → fundos de documento
+• Off-White: #F7F8FA → fundo de tela
+• Ink:    #111827  → texto principal
+
+<span class="tag">TIPOGRAFIA:</span>
+• Display/Títulos: Montserrat Black 900, tracking -2px, ALL CAPS ou Title Case
+• Headings: Montserrat Bold 700
+• Labels: Montserrat Bold 700, ALL CAPS, letter-spacing 2-3px
+• Corpo: Open Sans 400, line-height 1.75, mínimo 14px
+• Caption: Open Sans 300, 12px
+• Alternativas aceitas: Georama, Helvetica Neue, Neue Haas Grotesk
+
+<span class="tag">PRINCÍPIOS SWISS DESIGN:</span>
+• Hierarquia por escala tipográfica (contraste oversize/small)
+• Espaço em branco generoso (margens mínimas: 8% da largura)
+• Grid limpo, alinhamento consistente (preferência: left-aligned)
+• Máximo 3 tamanhos de fonte por peça
+• Máximo 3 cores por peça (fundo + principal + acento)
+• Zero ornamentos desnecessários — espaço e tipografia são a decoração
+
+<span class="tag">ESTRUTURA DOS MATERIAIS:</span>
+• Eyebrow label (11px, caps, amarelo ou azul) → sempre acima do título
+• Título display (grande, impactante)
+• Informação principal
+• Dados / bullets / tabela
+• Rodapé institucional: "Conselho Municipal de Saúde de Montes Claros – MG"
+
+<span class="tag">ASSINATURA INSTITUCIONAL:</span>
+Nome completo: Conselho Municipal de Saúde de Montes Claros
+Sigla: CMS Montes Claros
+Site: cms.montesclaros.mg.gov.br (ou URL vigente)
+Instagram: @conselhomunicipaldesaudemoc</pre>
+      </div>
+    </div>
+
+    <!-- POST INSTAGRAM -->
+    <div class="prompt-block">
+      <div class="prompt-label">Prompt Específico 01</div>
+      <div class="prompt-title">📱 Post para Instagram</div>
+      <p class="prompt-desc">Para comunicados, convites, informes e destaques nas redes sociais. Formato 1080×1080px.</p>
+      <div class="prompt-box" id="p-insta">
+        <button class="copy-btn" onclick="copyPrompt('p-insta',this)">COPIAR</button>
+        <pre>
+Crie um post para Instagram (HTML, 1080×1080px ou proporção 1:1) seguindo
+a identidade visual CMS Montes Claros definida acima.
+
+<span class="tag">CONTEÚDO:</span>
+Tipo de post: [INFORME / CONVITE / RESULTADO / PARABÉNS / etc.]
+Título principal: [ex: "463ª REUNIÃO ORDINÁRIA"]
+Dado em destaque: [ex: "04/03/2026"]
+Informação complementar: [ex: "13h30 · Câmara Municipal"]
+Hashtags: [ex: #SaúdeMC #ConselhoMunicipal]
+
+<span class="tag">LAYOUT (Swiss Design):</span>
+• Fundo: Navy (#0D2E5A) com textura sutil opcional
+• Canto superior esquerdo: logo CMS (círculo amarelo + texto branco)
+• Canto superior direito: label do tipo de post (caps, borda amarela)
+• Centro: número/título em Montserrat 900, oversize, branco/amarelo
+• Fundo: data/local em Open Sans 300, cinza claro
+• Elemento gráfico: linha amarela de 3px ou forma geométrica do logo
+• Ponto vermelho ● no canto superior direito (indica ao vivo/ativo)</pre>
+      </div>
+    </div>
+
+    <!-- PANFLETO -->
+    <div class="prompt-block">
+      <div class="prompt-label">Prompt Específico 02</div>
+      <div class="prompt-title">📄 Panfleto / Comunicado (A5 ou A4)</div>
+      <p class="prompt-desc">Para eventos, convocações, comunicados à população e serviços de saúde.</p>
+      <div class="prompt-box" id="p-panfleto">
+        <button class="copy-btn" onclick="copyPrompt('p-panfleto',this)">COPIAR</button>
+        <pre>
+Crie um panfleto em HTML seguindo a identidade visual CMS Montes Claros.
+Formato A5 paisagem ou A4 retrato. Deve ser imprimível (sem sombras pesadas).
+
+<span class="tag">CONTEÚDO:</span>
+Título/Evento: [ex: "Pré-Conferência de Saúde da Mulher"]
+Subtítulo/Tema: [ex: "Sua voz na saúde pública"]
+Data: [ex: 10 de março de 2026]
+Horário: [ex: 7h30]
+Local: [ex: SIMANS, Montes Claros]
+Endereço: [ex: Av. Major Prates, 1234]
+Informações adicionais: [ex: "Evento gratuito e aberto"]
+Contato/site: [ex: cms.montesclaros.mg.gov.br]
+
+<span class="tag">ESTRUTURA:</span>
+• Header: fundo azul (#1B6CB5), eyebrow label amarelo, título branco grande
+• Corpo: fundo branco, bullet points com dados, linha divisória azul
+• Rodapé: fundo off-white, logo + site + QR code placeholder
+• Margem lateral: 40px mínimo
+• Tipografia: Montserrat headings, Open Sans corpo</pre>
+      </div>
+    </div>
+
+    <!-- ATA / DOCUMENTO FORMAL -->
+    <div class="prompt-block">
+      <div class="prompt-label">Prompt Específico 03</div>
+      <div class="prompt-title">📋 Documento Formal (ATA, Relatório, Ofício)</div>
+      <p class="prompt-desc">Para documentos oficiais, atas de reunião, relatórios técnicos e ofícios.</p>
+      <div class="prompt-box" id="p-doc">
+        <button class="copy-btn" onclick="copyPrompt('p-doc',this)">COPIAR</button>
+        <pre>
+Crie um documento formal HTML seguindo a identidade visual CMS Montes Claros.
+
+<span class="tag">TIPO DE DOCUMENTO:</span> [ATA / RELATÓRIO / OFÍCIO / RESOLUÇÃO]
+
+<span class="tag">CABEÇALHO (obrigatório):</span>
+• Linha azul grossa no topo (4px, #1B6CB5)
+• Título do documento: Montserrat 900, azul escuro
+• Número/referência em amarelo ou azul médio
+• Dados: data, local, presidência
+
+<span class="tag">CORPO:</span>
+• Seções numeradas com h2 azul + linha divisória inferior
+• Falas/manifestações: borda esquerda azul (#1B6CB5), indent, nome em negrito
+• Tabelas: header navy, linhas alternadas off-white
+• Encaminhamentos: numerados, ícone ● amarelo + texto
+
+<span class="tag">RODAPÉ:</span>
+• Linha divisória + "Conselho Municipal de Saúde de Montes Claros – MG"
+• Número da página
+
+<span class="tag">CONTEÚDO PRINCIPAL:</span>
+[Cole aqui o conteúdo do documento — resumo, tópicos, informações, etc.]</pre>
+      </div>
+    </div>
+
+    <!-- INFOGRÁFICO -->
+    <div class="prompt-block">
+      <div class="prompt-label">Prompt Específico 04</div>
+      <div class="prompt-title">📊 Infográfico / Card de Dados</div>
+      <p class="prompt-desc">Para apresentar números, estatísticas, comparativos e resultados de forma visual.</p>
+      <div class="prompt-box" id="p-info">
+        <button class="copy-btn" onclick="copyPrompt('p-info',this)">COPIAR</button>
+        <pre>
+Crie um infográfico em HTML com os dados abaixo, seguindo a identidade CMS.
+
+<span class="tag">TÍTULO DO INFOGRÁFICO:</span> [ex: "Arboviroses em Montes Claros: 2024 vs 2025"]
+<span class="tag">TEMA/COR DOMINANTE:</span> [Navy / Azul / Verde] <span class="comment">← escolha 1</span>
+
+<span class="tag">DADOS:</span>
+[Cole aqui seus dados. Ex:
+- 2024: 37.387 casos notificados
+- 2025: 5.049 casos notificados
+- Redução: 86,5%
+- Óbitos 2024: 7 · Óbitos 2025: 0]
+
+<span class="tag">ESTRUTURA VISUAL:</span>
+• Número grande (oversize, Montserrat 900) = destaque principal
+• Label pequeno embaixo (Open Sans 300, caps)
+• Cards em grid 2x2 ou 3x1
+• Cores: positivo = verde, atenção = amarelo, crítico = vermelho
+• Fonte de dados no rodapé (12px, Open Sans Light)
+• Separação visual com linha amarela horizontal</pre>
+      </div>
+    </div>
+
+    <!-- BANNER/STORIES -->
+    <div class="prompt-block">
+      <div class="prompt-label">Prompt Específico 05</div>
+      <div class="prompt-title">📲 Stories / Banner Horizontal</div>
+      <p class="prompt-desc">Para stories do Instagram (9:16) ou banners digitais horizontais (16:9).</p>
+      <div class="prompt-box" id="p-stories">
+        <button class="copy-btn" onclick="copyPrompt('p-stories',this)">COPIAR</button>
+        <pre>
+Crie um [STORIES 9:16 / BANNER HORIZONTAL 16:9] em HTML para CMS Montes Claros.
+
+<span class="tag">CONTEÚDO:</span>
+Chamada principal: [ex: "REUNIÃO HOJE"]
+Dado em destaque: [ex: "13h30"]
+Local: [ex: Câmara Municipal]
+Call to action: [ex: "Participe!" / "Acompanhe ao vivo"]
+
+<span class="tag">LAYOUT STORIES (9:16):</span>
+• Bloco 1 (top 40%): fundo navy, logo + label
+• Bloco 2 (middle 35%): título oversize em amarelo/branco
+• Bloco 3 (bottom 25%): fundo azul, dados + CTA
+• Linha decorativa: horizontal, 2px, amarela, separando blocos
+
+<span class="tag">LAYOUT BANNER (16:9):</span>
+• Esquerda (60%): fundo branco, logo, título, dados
+• Direita (40%): fundo navy, número grande em amarelo
+• Faixa inferior: linha de 6px nas cores amarelo+verde+azul</pre>
+      </div>
+    </div>
+
+    <!-- CONVITE DIGITAL -->
+    <div class="prompt-block">
+      <div class="prompt-label">Prompt Específico 06</div>
+      <div class="prompt-title">✉️ Convite Digital / E-mail Marketing</div>
+      <p class="prompt-desc">Para convocações, convites a eventos e comunicados por e-mail ou WhatsApp.</p>
+      <div class="prompt-box" id="p-convite">
+        <button class="copy-btn" onclick="copyPrompt('p-convite',this)">COPIAR</button>
+        <pre>
+Crie um convite digital em HTML (para envio por e-mail ou WhatsApp) seguindo
+a identidade CMS Montes Claros. Largura máxima 600px, mobile-friendly.
+
+<span class="tag">EVENTO:</span> [nome do evento]
+<span class="tag">DATA:</span> [data]
+<span class="tag">HORÁRIO:</span> [horário]
+<span class="tag">LOCAL:</span> [local + endereço]
+<span class="tag">PÚBLICO-ALVO:</span> [ex: "Conselheiros e comunidade"]
+<span class="tag">DESCRIÇÃO:</span> [1-2 frases sobre o evento]
+<span class="tag">CONTATO/LINK:</span> [site ou WhatsApp]
+
+<span class="tag">ESTRUTURA:</span>
+• Header: fundo navy, logo centralizado, título do evento em amarelo
+• Hero strip: faixa de 6px (amarelo + verde + azul) — cores da bandeira
+• Body: fundo branco, ícones + dados (data/hora/local em grid 3 colunas)
+• CTA button: fundo amarelo, texto navy, Montserrat Bold, bordas retas
+• Footer: fundo off-white, rodapé institucional + unsubscribe</pre>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     6. CSS MESTRE
+════════════════════════════════════════════════ -->
+<section class="section" id="css">
+  <div class="wrap">
+    <p class="section-eyebrow">06 · CSS Mestre</p>
+    <h2 class="section-title">Folha de estilos<br><span>base</span></h2>
+    <p style="font-size:15px;color:var(--cms-muted);max-width:620px;margin-bottom:40px;line-height:1.75;">Copie e cole este CSS em qualquer projeto ou envie para a IA adaptar. É genérico o suficiente para documentos, relatórios, páginas web e comunicados. Basta incluir a classe <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:13px;">.cms-*</code> nos elementos.</p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <div class="code-dots"><span></span><span></span><span></span></div>
+        <span class="code-filename">cms-master.css</span>
+        <button class="copy-btn" id="css-copy-btn" onclick="copyCss(this)" style="position:static;">COPIAR</button>
+      </div>
+      <div class="code-content">
+        <code id="css-master-code">
+<span class="c-comment">/* ════════════════════════════════════════════════════
+   CMS MONTES CLAROS · MASTER CSS · 2026
+   Swiss Design System · versão 1.0
+   Use, adapte, envie para IA como base.
+════════════════════════════════════════════════════ */</span>
+
+<span class="c-at">@import</span> url(<span class="c-val">'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Open+Sans:wght@300;400;600&display=swap'</span>);
+
+<span class="c-comment">/* ── TOKENS ── */</span>
+<span class="c-sel">:root</span> {
+  <span class="c-comment">/* cores */</span>
+  <span class="c-prop">--cms-navy</span>:    <span class="c-val">#0D2E5A</span>;
+  <span class="c-prop">--cms-blue</span>:    <span class="c-val">#1B6CB5</span>;
+  <span class="c-prop">--cms-green</span>:   <span class="c-val">#1E8A4A</span>;
+  <span class="c-prop">--cms-yellow</span>:  <span class="c-val">#F5C400</span>;
+  <span class="c-prop">--cms-white</span>:   <span class="c-val">#FFFFFF</span>;
+  <span class="c-prop">--cms-off</span>:     <span class="c-val">#F7F8FA</span>;
+  <span class="c-prop">--cms-ink</span>:     <span class="c-val">#111827</span>;
+  <span class="c-prop">--cms-muted</span>:   <span class="c-val">#6B7280</span>;
+  <span class="c-prop">--cms-border</span>:  <span class="c-val">#E5E7EB</span>;
+
+  <span class="c-comment">/* tipografia */</span>
+  <span class="c-prop">--font-display</span>: <span class="c-val">'Montserrat', 'Georama', Helvetica, sans-serif</span>;
+  <span class="c-prop">--font-body</span>:    <span class="c-val">'Open Sans', Arial, sans-serif</span>;
+
+  <span class="c-comment">/* espaçamentos */</span>
+  <span class="c-prop">--space-xs</span>:  <span class="c-val">8px</span>;
+  <span class="c-prop">--space-sm</span>:  <span class="c-val">16px</span>;
+  <span class="c-prop">--space-md</span>:  <span class="c-val">32px</span>;
+  <span class="c-prop">--space-lg</span>:  <span class="c-val">64px</span>;
+  <span class="c-prop">--space-xl</span>:  <span class="c-val">96px</span>;
+
+  <span class="c-comment">/* raios */</span>
+  <span class="c-prop">--radius-sm</span>: <span class="c-val">6px</span>;
+  <span class="c-prop">--radius-md</span>: <span class="c-val">10px</span>;
+  <span class="c-prop">--radius-lg</span>: <span class="c-val">16px</span>;
+
+  <span class="c-comment">/* sombras */</span>
+  <span class="c-prop">--shadow-sm</span>: <span class="c-val">0 2px 8px rgba(0,0,0,.06)</span>;
+  <span class="c-prop">--shadow-md</span>: <span class="c-val">0 4px 20px rgba(0,0,0,.10)</span>;
+}
+
+<span class="c-comment">/* ── RESET MÍNIMO ── */</span>
+<span class="c-sel">*, *::before, *::after</span> { box-sizing: border-box; margin: 0; padding: 0; }
+
+<span class="c-sel">body</span> {
+  font-family: var(<span class="c-prop">--font-body</span>);
+  background: var(<span class="c-prop">--cms-white</span>);
+  color: var(<span class="c-prop">--cms-ink</span>);
+  line-height: <span class="c-val">1.65</span>;
+  font-size: <span class="c-val">15px</span>;
+}
+
+<span class="c-comment">/* ── LAYOUT ── */</span>
+<span class="c-sel">.cms-wrap</span> {
+  max-width: <span class="c-val">960px</span>;
+  margin: <span class="c-val">0 auto</span>;
+  padding: <span class="c-val">0 var(--space-lg)</span>;
+}
+<span class="c-sel">.cms-wrap-wide</span> { max-width: <span class="c-val">1200px</span>; }
+<span class="c-sel">.cms-wrap-narrow</span> { max-width: <span class="c-val">680px</span>; }
+
+<span class="c-at">@media</span> (max-width: <span class="c-val">680px</span>) {
+  <span class="c-sel">.cms-wrap, .cms-wrap-wide, .cms-wrap-narrow</span> {
+    padding: <span class="c-val">0 var(--space-sm)</span>;
+  }
+}
+
+<span class="c-sel">.cms-section</span> {
+  padding: var(<span class="c-prop">--space-lg</span>) <span class="c-val">0</span>;
+  border-bottom: <span class="c-val">1px solid var(--cms-border)</span>;
+}
+
+<span class="c-sel">.cms-grid-2</span> { display: grid; grid-template-columns: <span class="c-val">1fr 1fr</span>; gap: <span class="c-val">var(--space-md)</span>; }
+<span class="c-sel">.cms-grid-3</span> { display: grid; grid-template-columns: <span class="c-val">1fr 1fr 1fr</span>; gap: <span class="c-val">var(--space-sm)</span>; }
+<span class="c-sel">.cms-grid-4</span> { display: grid; grid-template-columns: <span class="c-val">repeat(4,1fr)</span>; gap: <span class="c-val">var(--space-sm)</span>; }
+
+<span class="c-at">@media</span> (max-width: <span class="c-val">760px</span>) {
+  <span class="c-sel">.cms-grid-2, .cms-grid-3, .cms-grid-4</span> { grid-template-columns: <span class="c-val">1fr</span>; }
+  <span class="c-sel">.cms-grid-4</span> { grid-template-columns: <span class="c-val">1fr 1fr</span>; }
+}
+
+<span class="c-comment">/* ── TIPOGRAFIA ── */</span>
+<span class="c-sel">.cms-display</span> {
+  font-family: var(<span class="c-prop">--font-display</span>);
+  font-size: clamp(<span class="c-val">40px, 6vw, 80px</span>);
+  font-weight: <span class="c-val">900</span>;
+  letter-spacing: <span class="c-val">-2px</span>;
+  line-height: <span class="c-val">0.95</span>;
+  color: var(<span class="c-prop">--cms-navy</span>);
+}
+<span class="c-sel">.cms-h1</span> {
+  font-family: var(<span class="c-prop">--font-display</span>);
+  font-size: clamp(<span class="c-val">28px, 4vw, 48px</span>);
+  font-weight: <span class="c-val">900</span>;
+  letter-spacing: <span class="c-val">-1px</span>;
+  line-height: <span class="c-val">1.05</span>;
+  color: var(<span class="c-prop">--cms-navy</span>);
+}
+<span class="c-sel">.cms-h2</span> {
+  font-family: var(<span class="c-prop">--font-display</span>);
+  font-size: clamp(<span class="c-val">20px, 2.5vw, 28px</span>);
+  font-weight: <span class="c-val">700</span>;
+  letter-spacing: <span class="c-val">-0.5px</span>;
+  color: var(<span class="c-prop">--cms-navy</span>);
+}
+<span class="c-sel">.cms-h3</span> {
+  font-family: var(<span class="c-prop">--font-display</span>);
+  font-size: <span class="c-val">16px</span>;
+  font-weight: <span class="c-val">700</span>;
+  color: var(<span class="c-prop">--cms-navy</span>);
+}
+<span class="c-sel">.cms-eyebrow</span> {
+  font-family: var(<span class="c-prop">--font-display</span>);
+  font-size: <span class="c-val">10px</span>;
+  font-weight: <span class="c-val">700</span>;
+  letter-spacing: <span class="c-val">3px</span>;
+  text-transform: <span class="c-val">uppercase</span>;
+  color: var(<span class="c-prop">--cms-blue</span>);
+}
+<span class="c-sel">.cms-body</span> {
+  font-family: var(<span class="c-prop">--font-body</span>);
+  font-size: <span class="c-val">15px</span>;
+  font-weight: <span class="c-val">400</span>;
+  line-height: <span class="c-val">1.75</span>;
+  color: var(<span class="c-prop">--cms-ink</span>);
+}
+<span class="c-sel">.cms-caption</span> {
+  font-family: var(<span class="c-prop">--font-body</span>);
+  font-size: <span class="c-val">12px</span>;
+  font-weight: <span class="c-val">300</span>;
+  letter-spacing: <span class="c-val">0.3px</span>;
+  color: var(<span class="c-prop">--cms-muted</span>);
+}
+<span class="c-sel">.cms-accent-yellow</span> { color: var(<span class="c-prop">--cms-yellow</span>); }
+<span class="c-sel">.cms-accent-blue</span>   { color: var(<span class="c-prop">--cms-blue</span>); }
+<span class="c-sel">.cms-accent-green</span>  { color: var(<span class="c-prop">--cms-green</span>); }
+
+<span class="c-comment">/* ── HEADER / HERO ── */</span>
+<span class="c-sel">.cms-header</span> {
+  background: var(<span class="c-prop">--cms-navy</span>);
+  color: var(<span class="c-prop">--cms-white</span>);
+  padding: var(<span class="c-prop">--space-xl</span>) var(<span class="c-prop">--space-lg</span>);
+}
+<span class="c-sel">.cms-header-blue</span> { background: var(<span class="c-prop">--cms-blue</span>); }
+<span class="c-sel">.cms-header-stripe</span> {
+  border-top: <span class="c-val">6px solid</span>;
+  border-image: <span class="c-val">linear-gradient(to right, #F5C400 33%, #1E8A4A 33% 66%, #1B6CB5 66%) 1</span>;
+}
+
+<span class="c-comment">/* ── CARDS ── */</span>
+<span class="c-sel">.cms-card</span> {
+  background: var(<span class="c-prop">--cms-white</span>);
+  border: <span class="c-val">1px solid var(--cms-border)</span>;
+  border-radius: var(<span class="c-prop">--radius-md</span>);
+  padding: var(<span class="c-prop">--space-md</span>);
+  box-shadow: var(<span class="c-prop">--shadow-sm</span>);
+}
+<span class="c-sel">.cms-card-navy</span>   { background: var(<span class="c-prop">--cms-navy</span>);  color: var(<span class="c-prop">--cms-white</span>); border: none; }
+<span class="c-sel">.cms-card-blue</span>   { background: var(<span class="c-prop">--cms-blue</span>);  color: var(<span class="c-prop">--cms-white</span>); border: none; }
+<span class="c-sel">.cms-card-yellow</span> { background: var(<span class="c-prop">--cms-yellow</span>); color: var(<span class="c-prop">--cms-navy</span>);  border: none; }
+
+<span class="c-sel">.cms-card-top-blue</span>   { border-top: <span class="c-val">3px solid var(--cms-blue)</span>; }
+<span class="c-sel">.cms-card-top-yellow</span> { border-top: <span class="c-val">3px solid var(--cms-yellow)</span>; }
+<span class="c-sel">.cms-card-top-green</span>  { border-top: <span class="c-val">3px solid var(--cms-green)</span>; }
+<span class="c-sel">.cms-card-left-blue</span>  { border-left: <span class="c-val">4px solid var(--cms-blue)</span>; border-radius: <span class="c-val">0 var(--radius-md) var(--radius-md) 0</span>; }
+
+<span class="c-comment">/* ── STAT / NÚMERO GRANDE ── */</span>
+<span class="c-sel">.cms-stat</span> {
+  text-align: <span class="c-val">center</span>;
+  padding: var(<span class="c-prop">--space-md</span>);
+}
+<span class="c-sel">.cms-stat-number</span> {
+  font-family: var(<span class="c-prop">--font-display</span>);
+  font-size: <span class="c-val">clamp(32px, 5vw, 56px)</span>;
+  font-weight: <span class="c-val">900</span>;
+  letter-spacing: <span class="c-val">-1px</span>;
+  line-height: <span class="c-val">1</span>;
+  color: var(<span class="c-prop">--cms-navy</span>);
+}
+<span class="c-sel">.cms-stat-label</span> {
+  font-size: <span class="c-val">12px</span>;
+  font-weight: <span class="c-val">400</span>;
+  color: var(<span class="c-prop">--cms-muted</span>);
+  text-transform: <span class="c-val">uppercase</span>;
+  letter-spacing: <span class="c-val">1px</span>;
+  margin-top: <span class="c-val">6px</span>;
+}
+
+<span class="c-comment">/* ── BOTÕES ── */</span>
+<span class="c-sel">.cms-btn</span> {
+  display: <span class="c-val">inline-block</span>;
+  font-family: var(<span class="c-prop">--font-display</span>);
+  font-size: <span class="c-val">13px</span>;
+  font-weight: <span class="c-val">700</span>;
+  letter-spacing: <span class="c-val">1.5px</span>;
+  text-transform: <span class="c-val">uppercase</span>;
+  padding: <span class="c-val">12px 28px</span>;
+  border-radius: var(<span class="c-prop">--radius-sm</span>);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: <span class="c-val">opacity .2s</span>;
+}
+<span class="c-sel">.cms-btn:hover</span> { opacity: <span class="c-val">.85</span>; }
+<span class="c-sel">.cms-btn-primary</span>   { background: var(<span class="c-prop">--cms-yellow</span>); color: var(<span class="c-prop">--cms-navy</span>); }
+<span class="c-sel">.cms-btn-secondary</span> { background: var(<span class="c-prop">--cms-blue</span>);   color: var(<span class="c-prop">--cms-white</span>); }
+<span class="c-sel">.cms-btn-dark</span>      { background: var(<span class="c-prop">--cms-navy</span>);   color: var(<span class="c-prop">--cms-white</span>); }
+<span class="c-sel">.cms-btn-outline</span>   { background: transparent; border: <span class="c-val">2px solid var(--cms-blue)</span>; color: var(<span class="c-prop">--cms-blue</span>); }
+
+<span class="c-comment">/* ── TABELAS ── */</span>
+<span class="c-sel">.cms-table</span> {
+  width: <span class="c-val">100%</span>;
+  border-collapse: <span class="c-val">collapse</span>;
+  font-size: <span class="c-val">14px</span>;
+  background: var(<span class="c-prop">--cms-white</span>);
+  border-radius: var(<span class="c-prop">--radius-md</span>);
+  overflow: <span class="c-val">hidden</span>;
+  border: <span class="c-val">1px solid var(--cms-border)</span>;
+}
+<span class="c-sel">.cms-table thead tr</span> { background: var(<span class="c-prop">--cms-navy</span>); color: var(<span class="c-prop">--cms-white</span>); }
+<span class="c-sel">.cms-table th</span> { padding: <span class="c-val">11px 14px</span>; text-align: <span class="c-val">left</span>; font-weight: <span class="c-val">600</span>; }
+<span class="c-sel">.cms-table td</span> { padding: <span class="c-val">10px 14px</span>; border-top: <span class="c-val">1px solid var(--cms-border)</span>; }
+<span class="c-sel">.cms-table tbody tr:nth-child(even) td</span> { background: var(<span class="c-prop">--cms-off</span>); }
+<span class="c-sel">.cms-table .cms-table-total td</span> { background: <span class="c-val">#DBEAFE</span>; font-weight: <span class="c-val">700</span>; }
+
+<span class="c-comment">/* ── LISTAS ── */</span>
+<span class="c-sel">.cms-list</span> { list-style: none; padding: <span class="c-val">0</span>; }
+<span class="c-sel">.cms-list li</span> {
+  display: flex;
+  gap: <span class="c-val">12px</span>;
+  align-items: flex-start;
+  padding: <span class="c-val">12px 0</span>;
+  border-bottom: <span class="c-val">1px solid var(--cms-border)</span>;
+  font-size: <span class="c-val">14px</span>;
+}
+<span class="c-sel">.cms-list li::before</span> {
+  content: <span class="c-val">'●'</span>;
+  color: var(<span class="c-prop">--cms-yellow</span>);
+  font-size: <span class="c-val">10px</span>;
+  margin-top: <span class="c-val">4px</span>;
+  flex-shrink: <span class="c-val">0</span>;
+}
+
+<span class="c-comment">/* ── FALA / CITAÇÃO ── */</span>
+<span class="c-sel">.cms-fala</span> {
+  border-left: <span class="c-val">4px solid var(--cms-blue)</span>;
+  padding: <span class="c-val">14px 20px</span>;
+  margin: <span class="c-val">var(--space-sm) 0</span>;
+  background: var(<span class="c-prop">--cms-off</span>);
+  border-radius: <span class="c-val">0 var(--radius-sm) var(--radius-sm) 0</span>;
+}
+<span class="c-sel">.cms-fala-nome</span> {
+  font-family: var(<span class="c-prop">--font-display</span>);
+  font-size: <span class="c-val">11px</span>;
+  font-weight: <span class="c-val">700</span>;
+  letter-spacing: <span class="c-val">1px</span>;
+  text-transform: <span class="c-val">uppercase</span>;
+  color: var(<span class="c-prop">--cms-blue</span>);
+  margin-bottom: <span class="c-val">6px</span>;
+}
+
+<span class="c-comment">/* ── ENCAMINHAMENTOS ── */</span>
+<span class="c-sel">.cms-enc</span> {
+  display: flex;
+  gap: <span class="c-val">14px</span>;
+  align-items: flex-start;
+  padding: <span class="c-val">14px 18px</span>;
+  background: var(<span class="c-prop">--cms-white</span>);
+  border: <span class="c-val">1px solid var(--cms-border)</span>;
+  border-radius: var(<span class="c-prop">--radius-md</span>);
+  margin-bottom: <span class="c-val">8px</span>;
+}
+<span class="c-sel">.cms-enc-n</span> {
+  min-width: <span class="c-val">28px</span>; height: <span class="c-val">28px</span>;
+  background: var(<span class="c-prop">--cms-navy</span>);
+  color: var(<span class="c-prop">--cms-white</span>);
+  border-radius: var(<span class="c-prop">--radius-sm</span>);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(<span class="c-prop">--font-display</span>);
+  font-size: <span class="c-val">12px</span>; font-weight: <span class="c-val">700</span>;
+  flex-shrink: <span class="c-val">0</span>;
+}
+
+<span class="c-comment">/* ── BADGE / TAG ── */</span>
+<span class="c-sel">.cms-tag</span> {
+  display: <span class="c-val">inline-block</span>;
+  padding: <span class="c-val">3px 10px</span>;
+  border-radius: <span class="c-val">4px</span>;
+  font-family: var(<span class="c-prop">--font-display</span>);
+  font-size: <span class="c-val">10px</span>;
+  font-weight: <span class="c-val">700</span>;
+  letter-spacing: <span class="c-val">1.5px</span>;
+  text-transform: <span class="c-val">uppercase</span>;
+}
+<span class="c-sel">.cms-tag-blue</span>   { background: var(<span class="c-prop">--cms-blue</span>);   color: var(<span class="c-prop">--cms-white</span>); }
+<span class="c-sel">.cms-tag-yellow</span> { background: var(<span class="c-prop">--cms-yellow</span>); color: var(<span class="c-prop">--cms-navy</span>); }
+<span class="c-sel">.cms-tag-green</span>  { background: var(<span class="c-prop">--cms-green</span>);  color: var(<span class="c-prop">--cms-white</span>); }
+<span class="c-sel">.cms-tag-navy</span>   { background: var(<span class="c-prop">--cms-navy</span>);  color: var(<span class="c-prop">--cms-white</span>); }
+<span class="c-sel">.cms-tag-outline</span>{ border: <span class="c-val">1.5px solid var(--cms-blue)</span>; color: var(<span class="c-prop">--cms-blue</span>); }
+
+<span class="c-comment">/* ── DIVISORES ── */</span>
+<span class="c-sel">.cms-divider</span>     { border: none; border-top: <span class="c-val">1px solid var(--cms-border)</span>; margin: var(<span class="c-prop">--space-md</span>) <span class="c-val">0</span>; }
+<span class="c-sel">.cms-divider-bold</span>{ border: none; border-top: <span class="c-val">3px solid var(--cms-blue)</span>; margin: var(<span class="c-prop">--space-md</span>) <span class="c-val">0</span>; }
+<span class="c-sel">.cms-stripe</span> {
+  height: <span class="c-val">5px</span>;
+  background: <span class="c-val">linear-gradient(to right, #F5C400 33.3%, #1E8A4A 33.3% 66.6%, #1B6CB5 66.6%)</span>;
+}
+
+<span class="c-comment">/* ── FOOTER ── */</span>
+<span class="c-sel">.cms-footer</span> {
+  background: var(<span class="c-prop">--cms-navy</span>);
+  color: <span class="c-val">rgba(255,255,255,.55)</span>;
+  text-align: <span class="c-val">center</span>;
+  padding: var(<span class="c-prop">--space-md</span>) var(<span class="c-prop">--space-lg</span>);
+  font-size: <span class="c-val">13px</span>;
+  font-family: var(<span class="c-prop">--font-body</span>);
+}
+<span class="c-sel">.cms-footer strong</span> { color: <span class="c-val">rgba(255,255,255,.85)</span>; }
+
+<span class="c-comment">/* ── UTILITÁRIOS ── */</span>
+<span class="c-sel">.cms-bg-navy</span>   { background: var(<span class="c-prop">--cms-navy</span>);   color: var(<span class="c-prop">--cms-white</span>); }
+<span class="c-sel">.cms-bg-blue</span>   { background: var(<span class="c-prop">--cms-blue</span>);   color: var(<span class="c-prop">--cms-white</span>); }
+<span class="c-sel">.cms-bg-yellow</span> { background: var(<span class="c-prop">--cms-yellow</span>); color: var(<span class="c-prop">--cms-navy</span>); }
+<span class="c-sel">.cms-bg-off</span>    { background: var(<span class="c-prop">--cms-off</span>); }
+<span class="c-sel">.cms-text-white</span>{ color: var(<span class="c-prop">--cms-white</span>); }
+<span class="c-sel">.cms-mt-sm</span> { margin-top: var(<span class="c-prop">--space-sm</span>); }
+<span class="c-sel">.cms-mt-md</span> { margin-top: var(<span class="c-prop">--space-md</span>); }
+<span class="c-sel">.cms-mb-sm</span> { margin-bottom: var(<span class="c-prop">--space-sm</span>); }
+<span class="c-sel">.cms-mb-md</span> { margin-bottom: var(<span class="c-prop">--space-md</span>); }
+<span class="c-sel">.cms-center</span>   { text-align: center; }
+<span class="c-sel">.cms-bold</span>     { font-weight: 700; }
+<span class="c-sel">.cms-light</span>    { font-weight: 300; }</code>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="page-footer">
+  <strong>Conselho Municipal de Saúde de Montes Claros – MG</strong><br>
+  Guia de Identidade Visual &amp; Prompts IA · Versão 1.0 · 2026
+</footer>
+
+<script>
+function copyPrompt(id, btn) {
+  const el = document.getElementById(id).querySelector('pre');
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'COPIADO ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'COPIAR'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+function copyCss(btn) {
+  const el = document.getElementById('css-master-code');
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'COPIADO ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'COPIAR'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+// Nav active scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.topbar-nav a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  navLinks.forEach(a => a.style.color = a.getAttribute('href') === '#'+cur ? 'var(--cms-yellow)' : '');
+});
+</script>
+</body>
+</html>
