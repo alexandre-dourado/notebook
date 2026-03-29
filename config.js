@@ -15,7 +15,7 @@ const CONFIG = {
 
   // ─── Token (opcional — só para repos privados) ────────────────────────────
   // Deixe vazio "" para repositórios públicos.
-  GITHUB_TOKEN: "ghp_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",
+  GITHUB_TOKEN: "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",
 
   // ─── Metadados da app ─────────────────────────────────────────────────────
   APP_NAME:     "Notebook",
